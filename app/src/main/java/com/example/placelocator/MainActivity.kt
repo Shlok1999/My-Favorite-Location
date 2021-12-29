@@ -1,5 +1,6 @@
 package com.example.placelocator
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +10,7 @@ import com.example.placelocator.models.UserMap
 import kotlinx.android.synthetic.main.activity_main.*
 
 private const val TAG = "MainActivity"
+const val EXTRA_USER_MAP= "EXTRA_USER_MAP"
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,6 +24,9 @@ class MainActivity : AppCompatActivity() {
             override fun onItemClick(position: Int) {
                 Log.i(TAG,"onItemClicked: $position")
                 //When user taps to the item view in RV, it navigates to the new activity
+                val intent = Intent(this@MainActivity, Display_map::class.java)
+                intent.putExtra(EXTRA_USER_MAP, userMapGenerate[position])
+                startActivity(intent)
             }
 
         })
