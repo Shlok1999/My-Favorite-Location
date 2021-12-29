@@ -28,6 +28,7 @@ class Display_map : AppCompatActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
 
         userMap = intent.getSerializableExtra(EXTRA_USER_MAP) as UserMap
+        supportActionBar?.title = userMap.title
         binding = ActivityDisplayMapBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
